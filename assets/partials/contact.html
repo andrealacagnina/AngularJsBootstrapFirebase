@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Contanct !</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>Contact</h1>
+            
+            <div class="page-header row">
+                <!--
+                <h1><img src="http://placehold.it/50x50" class="img-circle"> con id numero {{id}} </h1>
+                -->
+                <!-- Ho aggiutno una direttiva di nome gravatar-->
+                <h1><gravatar class="img-circle"></gravatar> id {{id}} </h1>
+                
+                <BR>
+                <div>
+                    <h3>name:  {{contact.name}}</h3><p class="form-control-static" editable="contact.name" field-type="text"></p>
+                    <h3> phone: {{contact.phone}}</h3><p class="form-control-static" editable="contact.phone" field-type="text"></p>
+                    <h3> email: {{contact.email}}</h3> <p class="form-control-static" editable="contact.email" field-type="text"></p>
+                    <!-- <h3> info(truncate): {{contact.info|myTruncate:12}}</h3> -->
+                    <!-- <h3> info(sub): {{contact.info|paragraph}}</h3> -->
+                    <hr>
+                    <h3>info(paragraph): </h3><h3 class="form-control-static" ng-bind-html="contact.info|paragraph"></h3> 
+                </div>
+                <BR>
+            </div>
+        </div>
+
+        
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>SubIndex !</title>   
+</head>
+
+<body>
+    
+    <div class="page-header">
+            <h1>All contacts</h1>
+    </div>
+        
+    <div class="container">
+        <div> 
+            <h3>From Localhost</h3>
+            <table class="table-responsiveg table-striped col-sx-12 col-sm-12 col-md-12 col-lg-12">
+                <thead>
+                    <tr>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Name</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Email Address</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Phone Number</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contact in index_contacts | filter:search">
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.phone}}</td>
+                        <td>
+                            <!--<a href="contact/{{$index}}" class="btn btn-default btn-xs">View</a>
+                            <button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>-->
+                            <a href="contact/{{contact.id}}" class="btn btn-default btn-xs">View</a>
+                            <button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+            
+            
+    <div class="container">
+        <div>   
+            <h3>From Firebase</h3>
+            <table class="table-responsiveg table-striped col-sx-12 col-sm-12 col-md-12 col-lg-12">
+                <thead>
+                    <tr>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Name</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Email Address</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Phone Number</th>
+                        <th class="table-bordered col-sx-4 col-sm-4 col-md-4 col-lg-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="con in allElem | filter:search">
+                    <td>{{con.name}} - {{con.id}}</td>
+                    <td>{{con.email}}</td>
+                    <td>{{con.phone}}</td>
+                    <td><button class="btn btn-danger btn-xs" ng-click="deleteItem($index)">Delete</button></td>
+                </tr>
+                <br>
+            </tbody>
+            </table>  
+        </div>
+    </div>
+       
+    <br>
+    <br>
+    Autore: {{autore}} (è un valore di tipo value)
+
+</body>
+</html>
