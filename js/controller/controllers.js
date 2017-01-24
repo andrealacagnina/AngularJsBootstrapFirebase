@@ -43,6 +43,8 @@ bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_servic
     $scope.id = $routeParams.id;
     $scope.contact = contact_service.find($routeParams.id);
     */
+    
+    
     $scope.id = $routeParams.id;
     $scope.contact = myContacts_service.find($routeParams.id);
     
@@ -50,6 +52,7 @@ bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_servic
     //$on. Il listener seguirà il metodo $update sul modello contact. Tuttavia siccome l'evento viene emesso 
     //prima che il modello abbia concluso la'ggiornamento, dobbiamo spingerlo alla fine dello stack e della
     //coda corrente. Per fare ciò utilizzeremo il servizio timeout di angular
+    
     $scope.$on('saved', function(){
         $timeout(function(){
             $scope.contact.$update();
@@ -59,7 +62,7 @@ bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_servic
     
     //Firebase
     $scope.contact = Firebase_service.find($routeParams.id);
-    //Firebase
+    
     $scope.$on('Firebase_saved', function(){
         $timeout(function(){
             Firebase_service.upadate($scope.contact, $scope.id);

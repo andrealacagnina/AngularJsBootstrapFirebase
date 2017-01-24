@@ -99,12 +99,7 @@ bookApp.factory('Firebase_service', function($resource, $firebaseObject, firebas
     firebase.initializeApp(config);
    
 
-    //const rootRef = firebase.database().ref().child('nome Child');
-    //const ref = rootRef.child('object');
-    //this.object = $firebaseObject(rootRef);
     const rootRef = firebase.database().ref();
-    const newRootRef = firebase.database();
-    var sync = $firebaseArray(rootRef);
     
 
     //##########################################################################
@@ -112,12 +107,15 @@ bookApp.factory('Firebase_service', function($resource, $firebaseObject, firebas
    
     return {
         all: function() {
+            var sync = $firebaseArray(rootRef);
             return sync;
         },
         destroy: function(index){
+            var sync = $firebaseArray(rootRef);
             sync.$remove(index);
         },
         add: function(element){
+            var sync = $firebaseArray(rootRef);
             sync.$add({
                 name: element.name,
                 phone: element.phone,
@@ -126,13 +124,12 @@ bookApp.factory('Firebase_service', function($resource, $firebaseObject, firebas
         },
         find: function(id){
             const rootRefFind = firebase.database().ref().child(id);
-            sync = $firebaseObject(rootRefFind);
+            var sync = $firebaseObject(rootRefFind);
             return sync;
-
         },
         upadate: function(contatto, id){
             var rootRefUpdate = firebase.database().ref().child(id);
-            sync = $firebaseObject(rootRefUpdate);
+            var sync = $firebaseObject(rootRefUpdate);
             sync.name = contatto.name;
             sync.phone = contatto.phone;
             sync.email = contatto.email;
