@@ -103,7 +103,9 @@ bookApp.factory('Firebase_service', function($resource, $firebaseObject, firebas
     //const ref = rootRef.child('object');
     //this.object = $firebaseObject(rootRef);
     const rootRef = firebase.database().ref();
+    const newRootRef = firebase.database();
     var sync = $firebaseArray(rootRef);
+    
 
     //##########################################################################
     
@@ -120,7 +122,21 @@ bookApp.factory('Firebase_service', function($resource, $firebaseObject, firebas
                 name: element.name,
                 phone: element.phone,
                 email: element.email
-            });
+            });           
+        },
+        find: function(id){
+            const rootRefFind = firebase.database().ref().child(id);
+            sync = $firebaseObject(rootRefFind);
+            return sync;
+
+        },
+        upadate: function(contatto, id){
+            var rootRefUpdate = firebase.database().ref().child(id);
+            sync = $firebaseObject(rootRefUpdate);
+            sync.name = contatto.name;
+            sync.phone = contatto.phone;
+            sync.email = contatto.email;
+            sync.$save();        
         }
     };
 })

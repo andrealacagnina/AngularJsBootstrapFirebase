@@ -55,10 +55,13 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="con in allElem | filter:search">
-                    <td>{{con.name}} - {{con.id}}</td>
+                    <td>{{con.name}} - {{con.$id}}</td>
                     <td>{{con.email}}</td>
                     <td>{{con.phone}}</td>
-                    <td><button class="btn btn-danger btn-xs" ng-click="deleteItem($index)">Delete</button></td>
+                    <td>
+                        <a href="contact/{{con.$id}}" class="btn btn-default btn-xs">View</a>
+                        <button class="btn btn-danger btn-xs" ng-click="deleteItem($index)">Delete</button>
+                    </td>
                 </tr>
                 <br>
             </tbody>

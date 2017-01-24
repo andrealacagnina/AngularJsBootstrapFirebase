@@ -57,6 +57,7 @@ bookApp.directive('editable', function(){
             $scope.save = function(){
                 $scope.value = $scope.editor.value;
                 $scope.$emit('saved');
+                $scope.$emit('Firebase_saved');
                 $scope.toggleEditor();
             };
 

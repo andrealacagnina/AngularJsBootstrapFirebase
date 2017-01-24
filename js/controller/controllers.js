@@ -12,11 +12,11 @@ bookApp.controller('indexCrl', function($scope, $routeParams, /*contact_service*
     */
    
     //Firebase 
-    $scope.allElem = Firebase_service.all();    
-    
-    $scope.deleteItem = function(index){
-        Firebase_service.destroy(index);
-        console.log(index);
+    $scope.allElem = Firebase_service.all();
+
+    $scope.deleteItem = function(id){
+        Firebase_service.destroy(id);
+        console.log(id);
     }
     
     
@@ -37,7 +37,7 @@ bookApp.controller('indexCrl', function($scope, $routeParams, /*contact_service*
 });
 
 //funziona solo nella parziale ..partials/contact.html
-bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_service*/ myContacts_service, $timeout)
+bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_service*/ myContacts_service, $timeout, Firebase_service)
 {    
     /*
     $scope.id = $routeParams.id;
@@ -55,6 +55,17 @@ bookApp.controller('contactCrl', function($scope, $routeParams, /*contact_servic
             $scope.contact.$update();
         }, 0);
     });
+    
+    
+    //Firebase
+    $scope.contact = Firebase_service.find($routeParams.id);
+    //Firebase
+    $scope.$on('Firebase_saved', function(){
+        $timeout(function(){
+            Firebase_service.upadate($scope.contact, $scope.id);
+        }, 0);
+    });
+    
 
 });
 
@@ -85,8 +96,6 @@ bookApp.controller('addCtr', function($scope, /*contact_service*/ myContacts_ser
         $scope.added = true;
     }
     */
-   
-    
    
    
     //Localhost e Firebase
